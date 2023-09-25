@@ -1,4 +1,4 @@
-# Se usa com base
+# Se usa como base y referencia
 https://github.com/Skamasle/sk-php-selector
 
 # sk-php-selector
