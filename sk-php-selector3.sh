@@ -12,11 +12,11 @@ fi
 # fix php 8 version detection...
 vp=$(php -v |head -n1 |cut -c5)
 if [ "$vp" -eq 5 ];then
-	actual=$(php -v| head -n1 | grep --only-matching --perl-regexp "5\.\\d+")
+    actual=$(php -v| head -n1 | grep --only-matching --perl-regexp "5\.\\d+")
 elif [ "$vp" -eq 7 ];then
-	actual=$(php -v| head -n1 | grep --only-matching --perl-regexp "7\.\\d+")
+    actual=$(php -v| head -n1 | grep --only-matching --perl-regexp "7\.\\d+")
 elif [ "$vp" -eq 8 ];then
-	actual=$(php -v| head -n1 | grep --only-matching --perl-regexp "8\.\\d+")
+    actual=$(php -v| head -n1 | grep --only-matching --perl-regexp "8\.\\d+")
 else
 echo "Cant get actual php version"
 echo "Run php -v and ask on forum or yo@skamasle.com"
@@ -81,60 +81,61 @@ tput sgr0
 }
 usage () {
 tput setaf 1
-	echo "You can select php version you need, run your script as :"
+    echo "You can select php version you need, run your script as :"
 tput sgr0
 echo "bash $0 php55"
 echo "or"
 echo "bash $0 php56 php55 php71 php81"
 tput setaf 1
-	echo "or install all available versions :"
+    echo "or install all available versions :"
 tput sgr0
 echo "bash $0 all"
 tput setaf 1
     echo "##############################################################"
-	echo "Supported Versions: 54, 55, 56, 70, 71, 72, 73, 80, 81, 82"
+    echo "Supported Versions: 54, 55, 56, 70, 71, 72, 73, 80, 81, 82"
     echo "##############################################################"
 tput sgr0
 }
 
 if [ -e /etc/redhat-release ];then
-	if [ -z "$1" ]; then
-		usage
-		exit 2
-	fi
-	if [[ "$sistema" -eq 7  ||  "$sistema" -eq 6 ]]; then
-		tput setaf 4
-			echo "You have remi repo installed and run: "
-			cat /etc/redhat-release
-			echo "##########"
-			echo "Start installing aditional php version"
-			echo "##########"
-		tput sgr0
+    if [ -z "$1" ]; then
+        usage
+        exit 2
+    fi
+    if [[ "$sistema" -eq 7  ||  "$sistema" -eq 6 ]]; then
+        tput setaf 4
+            echo "You have remi repo installed and run: "
+            cat /etc/redhat-release
+            echo "##########"
+            echo "Start installing aditional php version"
+            echo "##########"
+        tput sgr0
 for args in "$@" ; do
 tput setaf 2
-	echo "Actually you runing php $actual, so I will skip it"
+    echo "Actually you runing php $actual, so I will skip it"
 tput sgr0
-		case $args  in
-			php54) installit 54 5.4 ;;
-			php55) installit 55 5.5 ;;
-			php56) installit 56 5.6 ;;
-			php70) installit 70 7.0 ;;
-			php71) installit 71 7.1 ;;
-			php72) installit 72 7.2 ;;
+        case $args  in
+            php54) installit 54 5.4 ;;
+            php55) installit 55 5.5 ;;
+            php56) installit 56 5.6 ;;
+            php70) installit 70 7.0 ;;
+            php71) installit 71 7.1 ;;
+            php72) installit 72 7.2 ;;
             php73) installit 73 7.3 ;;
             php74) installit 74 7.4 ;;
             php80) installit 80 8.0 ;;
             php81) installit 81 8.1 ;;
-	    php82) installit 82 8.2 ;;
-			all) all ;;
-	  esac
+        php82) installit 82 8.2 ;;
+            all) all ;;
+      esac
 done
 echo "################################"
 echo "Aditional PHP versión installed!"
-echo "More info on skamasle.com or forum.vestacp.com or follow me in twiter @skamasle"
+echo "More info on https://github.com/jivanmp/sk-php-selector/"
+echo "Tkanks skamasle.com or forum.vestacp.com or follow me in twiter @skamasle"
 echo "################################"
-		fi
+        fi
 else
-	echo "Only support centos"
+    echo "Only support centos"
 exit 3
 fi
