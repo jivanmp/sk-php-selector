@@ -26,7 +26,7 @@ fi
 
 fixit () {
 # Temporary the resource from my personal Github repo.
-curl -s https://raw.githubusercontent.com/samaphp/sk-php-selector/master/sk-php${1}-centos.sh > /usr/local/vesta/data/templates/web/httpd/sk-php${1}.sh
+curl -s https://raw.githubusercontent.com/jivanmp/sk-php-selector/main/sk-php${1}-centos.sh > /usr/local/vesta/data/templates/web/httpd/sk-php${1}.sh
 if [ ! -e /usr/local/vesta/data/templates/web/httpd/sk-php${1}.stpl ]; then
     ln -s /usr/local/vesta/data/templates/web/httpd/phpfcgid.stpl /usr/local/vesta/data/templates/web/httpd/sk-php${1}.stpl
 fi
